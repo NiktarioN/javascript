@@ -1,23 +1,56 @@
 'use strict';
 
-let myString = "artificial",
-	btnClick1 = document.querySelector('.btn_task1'),
-	btnClick2 = document.querySelector('.btn_task2');
+// Task 1
+let x1 = 5;
+console.log(x1++);
 
-btnClick1.onclick = () => {
-	let myStringReverse = myString.toString().split('').reverse().join('');
+// Ответ 5. Почему? Если ++ или — ставить перед переменной, то значение сначала будет старое, а уже после действия новое
 
-	alert("Перевернутое слово от " + myString + " будет " + myStringReverse);
-}
+// Task 2
+console.log([] + false - null + true);
 
-btnClick2.onclick = () => {
-	let newString = myString.toString(),
-		myStringReverse = "";
+// Ответ NaN. Почему? Сначала мы складываем пустой массив с false. Когда мы что-то складываем с пустым массивом это превращается в строку, поэтому после первой операции будет просто строка "false". Дальше мы строку вычитаем с null и это уже не математическая операция и получаем NaN
 
-	for (let i = newString.length - 1; i >= 0; i--) {
-		myStringReverse += newString[i];
-		console.log(myStringReverse);
-	}
+// Task 3 
+let y3 = 1,
+	x3 = y3 = 2;
+console.log(x3);
 
-	alert("Перевернутое слово от " + myString + " будет " + myStringReverse);
-}
+// Ответ 2. Почему? Потому что знак "=" присваивает значение. Здесь как раз сначала y присваивается значение 2, а потом х присваивается значение у
+
+// Task 4
+console.log([] + 1 + 2);
+
+// Ответ 12. Почему? Как и в Task 2 складываем пустой массив с числом и получается строка, а уже потом строка складывается с числом и получается все равно строка
+
+// Task 5
+console.log("1" [0]);
+
+// Ответ 1. Почему? Если честно не знаю, интуация сразу так сказала. Думаю из-за того, что [0] является просто пустой строкой и поэтому никак не влияет на вывод
+
+// Task 6
+console.log(2 && 1 && null && 0 && undefined)
+
+// Ответ NULL. Почему? Не верю консоли. Идем по шагам. 2 && 1 = true (в консоли пишет вообще 1, ПОЧЕМУ?). Дальше true && null = false, т.к. null всегда false. Дальше false && 0 = false, т.к. 0 всегда false. Дальше false && undefined = false, т.к. undefined всегда false. Так почему ответ null????? Может все из-за того, что это все не булевое выражение и там нет четкого true или false?
+
+// Task 7
+let a, b;
+console.log(!!(a && b) == (a && b))
+
+// Ответ False. Не понимаю почему так. Ведь оператор !! приводит выражение к булевому типу. Разве выражение (a && b) это не сразу булевое? 
+
+// Task 8
+console.log(null || 2 && 3 || 4);
+
+// Ответ 3. Тоже ничего не понял, вопросы те же, что и в Task 6
+
+// Task 9 
+let m = [1, 2, 3],
+	n = [1, 2, 3];
+
+console.log(m == n);
+
+// Ответ False. Почему так, если это два одинаковых массива? Значения одинаковые. Должно же быть true
+
+// Task 10
+console.log(+'infinity');
