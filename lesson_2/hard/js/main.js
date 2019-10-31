@@ -1,13 +1,28 @@
 'use strict';
 
-let num = 33721;
+let week = ['Понедельник',
+	'Вторник',
+	'Среда',
+	'Четверг',
+	'Пятница',
+	'Суббота',
+	'Воскресенье'
+];
 
-let numMultiplication = num.toString().split('').reduce((a, b) => {
-	return +(a * b);
-});
+for (let i = 0; i < week.length; i++) {
+	if (i == 5 || i == 6) {
+		document.write(week[i].bold() + "<br>");
+	} else if (i == 3) {
+		document.write(week[i].italics() + "<br>");
+	} else {
+		document.write(week[i] + "<br>");
+	}
+}
 
-alert("Произведение цифр числа " + num + " равно: " + numMultiplication);
+let arr = ['367', '6666', '3456', '12345', '746802', '5671', '7102'];
 
-let numPow = numMultiplication ** 3;
-
-alert("Возведение числа " + numMultiplication + " в степень 3 равно " + numPow.toString().substring(0, 8) + ", а первые два числа равны " + numPow.toString().substring(0, 2));
+for (let i = 0; i < arr.length; i++) {
+	if (arr[i].substring(0, 1) == "3" || arr[i].substring(0, 1) == "7") {
+		console.log(arr[i]);
+	}
+}
