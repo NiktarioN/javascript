@@ -1,28 +1,61 @@
 'use strict';
 
-let week = ['Понедельник',
-	'Вторник',
-	'Среда',
-	'Четверг',
-	'Пятница',
-	'Суббота',
-	'Воскресенье'
-];
+// Task 1
+let str = 'урок-3-был слишком легким';
 
-for (let i = 0; i < week.length; i++) {
-	if (i == 5 || i == 6) {
-		document.write(week[i].bold() + "<br>");
-	} else if (i == 3) {
-		document.write(week[i].italics() + "<br>");
+str = str[0].toUpperCase() + str.slice(1);
+
+console.log(str);
+// Самый правильный вариант, т.к может работать с отриц. значениями
+
+// str = str[0].toUpperCase() + str.substring(1);
+
+// str = str[0].toUpperCase() + str.substr(1);
+
+// Task 2
+str = str.replace(/-/g, " ");
+
+console.log(str);
+
+// Task 3
+str = str.split(' ');
+str = str.slice(0, str.length - 1) + str[str.length - 1].replace('им', 'о');
+str = str.join();
+
+console.log(str);
+
+// Task 4
+let arr = [20, 33, 1, 'Человек', 2, 3],
+	countThis,
+	sumCubes = 0;
+
+countThis = () => {
+	for (let i = 0; i < arr.length; i++) {
+		if ((typeof (arr[i]) === 'number')) {
+			sumCubes += Math.pow(arr[i], 3);
+		} else {
+			continue;
+		}
+	}
+	sumCubes = Math.sqrt(sumCubes).toFixed(3);
+}
+countThis();
+
+console.log(sumCubes);
+
+// Пытался вывести в консоль результат countThis и в консоль выводилась просто функция. Почему так, если итог функции какое-то значение. 
+
+// Task 5
+function changeText(e) {
+	if (typeof (e) == 'string') {
+		e = e.trim();
+		if (e.length > 50) {
+			e = e.slice(0, 50) + "...";
+		}
 	} else {
-		document.write(week[i] + "<br>");
+		alert("Пожалуйста, введите строчное значение");
 	}
+	return e;
 }
 
-let arr = ['367', '6666', '3456', '12345', '746802', '5671', '7102'];
-
-for (let i = 0; i < arr.length; i++) {
-	if (arr[i].substring(0, 1) == "3" || arr[i].substring(0, 1) == "7") {
-		console.log(arr[i]);
-	}
-}
+console.log(changeText("             Туман за окном, почти непроглядная белая пелена - идёт снег! Он покрыл землю, крыши и ветви деревьев, он пришёл на смену неприятному холоду и льду предшествующих дней, он зовёт гулять - погрузиться в этот влажный, полный белых пушинок воздух и идти, идти, идти - дыша свежестью             и превращаясь в сугроб, ловя момент - ибо сия прелесть недолговечна, и уже очень скоро будет либо мороз, либо тихая погода с серым и низким зимним небом, либо - месиво из снега, воды и грязи.                "));
