@@ -19,8 +19,7 @@ console.log(str);
 
 // Task 3
 str = str.split(' ');
-str = str.slice(0, str.length - 1) + str[str.length - 1].replace('им', 'о');
-str = str.join();
+str = str[str.length - 1].replace('им', 'о');
 
 console.log(str);
 
@@ -37,13 +36,10 @@ countThis = () => {
 			continue;
 		}
 	}
-	sumCubes = Math.sqrt(sumCubes).toFixed(3);
+	return sumCubes = Math.sqrt(sumCubes).toFixed(3);
 }
-countThis();
 
-console.log(sumCubes);
-
-// Пытался вывести в консоль результат countThis и в консоль выводилась просто функция. Почему так, если итог функции какое-то значение. 
+console.log(countThis());
 
 // Task 5
 function changeText(e) {
