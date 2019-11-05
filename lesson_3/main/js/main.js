@@ -65,7 +65,7 @@ function checkSavings() {
 	}
 }
 
-function optionalExpenses() {
+function chooseOptExpenses() {
 	for (let i = 0; i < 3; i++) {
 		let optional = prompt("Статья необязательных расходов?", "Бургер");
 		if ((typeof (optional)) === 'string' && (typeof (optional) != null) && optional != ' ' && optional.length < 50) {
@@ -81,4 +81,4 @@ chooseExpenses();
 detectDayBudget();
 detectLevel();
 checkSavings();
-optionalExpenses();
+chooseOptExpenses();
