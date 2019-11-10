@@ -1,0 +1,23 @@
+'use strict';
+
+let btnStart = document.getElementById('start'),
+	budgetValue = document.getElementsByClassName('budget-value'),
+	daybudgetValue = document.getElementsByClassName('daybudget-value'),
+	levelValue = document.getElementsByClassName('level-value'),
+	expensesValue = document.getElementsByClassName('expenses-value'),
+	optionalexpensesValue = document.getElementsByClassName('optionalexpenses-value'),
+	incomeValue = document.getElementsByClassName('income-value'),
+	monthsavingsValue = document.getElementsByClassName('monthsavings-value'),
+	yearsavingsValue = document.getElementsByClassName('yearsavings-value'),
+	expensesItem = document.getElementsByClassName('expenses-item'),
+	btnExpenses = document.getElementsByTagName('button')[0],
+	btnOptionalExpenses = document.getElementsByTagName('button')[1],
+	btnBudgetCount = document.getElementsByTagName('button')[2],
+	itemOptionalExpenses = document.querySelectorAll('.optionalexpenses-item'),
+	chooseIncome = document.querySelector('.choose-income'),
+	savings = document.querySelector('#savings'),
+	sum = document.querySelector('.choose-sum'),
+	percent = document.querySelector('.choose-percent'),
+	dayValue = document.querySelector('.day-value'),
+	monthValue = document.querySelector('.month-value'),
+	yearValue = document.querySelector('.year-value');
