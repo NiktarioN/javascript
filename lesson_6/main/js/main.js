@@ -44,15 +44,6 @@ function checkNum(item) {
 }
 
 // Функция для проверки ввода только букв
-// function checkWord(item) {
-// 	item.addEventListener('input', () => {
-// 		if (/[^а-яё ]/.test(item.value)) {
-// 			item.defaultValue = item.value;
-// 		} else {
-// 			item.value = item.defaultValue;
-// 		}
-// 	});
-// }
 function checkWord(item) {
 	item.addEventListener('input', () => {
 		item.value = item.value.replace(/[^а-яё]/, '');
