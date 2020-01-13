@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Сложное задание. Урок № 9</title>
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+	<div class="overlay">
+		<div class="popup popup__call">
+			<form class="popup__call-form" action="#">
+				<div class="popup__call-phoneblock">
+					<div class="popup__call-phone">
+						<input class="input__call-phobe-rus" required data-mask="rus" name="Rus" type="text"
+							placeholder="+7 (___) ___ __ __">
+						<div class="popup__call-wrap">
+							<div class="popup__call-country">РФ</div>
+							<svg class="popup__call-svg" width="22" height="13" viewBox="0 0 22 13" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.2461 2L11.1228 10L1.99951 2" stroke="black" stroke-opacity="0.9"
+									stroke-width="4" />
+							</svg>
+						</div>
+					</div>
+					<div class="popup__call-phone popup__call-phone-hidden" style="visibility: hidden">
+						<input class="input__call-phobe-bel" data-mask="bel" name="Belarus" class="secondCountry"
+							type="text" placeholder="+375 (__) ___ __ __">
+						<div class="popup__call-wrap">
+							<div class="popup__call-country">Беларусь</div>
+							<svg class="popup__call-svg" width="22" height="13" viewBox="0 0 22 13" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<path d="M20.2461 2L11.1228 10L1.99951 2" stroke="black" stroke-opacity="0.9"
+									stroke-width="4" />
+							</svg>
+						</div>
+					</div>
+				</div>
+				<button class="button">Перезвоните мне</button>
+			</form>
+		</div>
+	</div>
+	<!-- Подключаю JQ -->
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<!-- Подклчаю плагин для маски -->
+	<script src="js/jquery.maskedinput.min.js"></script>
+	<!-- Подключаю свой скрипт -->
+	<script src="js/script.js"></script>
+</body>
+
+</html>
