@@ -147,68 +147,66 @@ window.addEventListener('DOMContentLoaded', () => {
 		failure: 'Что-то пошло не так...'
 	};
 
-	const popupForm = document.querySelector('.main-form'),
-		contactForm = document.querySelector('.contact-send'),
-		statusMessage = document.createElement('div');
+	const statusMessage = document.createElement('div');
 
 	statusMessage.classList.add('status');
 
-	popupForm.addEventListener("submit", (e) => sendData(event, popupForm, statusMessage), {
-		"once": true
-	});
-	contactForm.addEventListener("submit", (e) => sendData(event, contactForm, statusMessage), {
-		"once": true
-	});
+	function sendData(form, message) {
+		let formToSubmit = document.querySelector(form);
 
-	// Не вешать на кнопку! Вешать на саму форму
-	// События для отправки данных для модального окна
-	function sendData(event, form, message) {
-		event.preventDefault();
-		form.appendChild(message);
+		// Не вешать на кнопку! Вешать на саму форму
+		// События для отправки данных для модального окна
+		formToSubmit.addEventListener('submit', function (event) {
+			event.preventDefault();
+			this.appendChild(message);
 
-		// Объект FormData создаст данные из формы в формате ключ:значение. Здесь получаем данные из определенной формы
-		let formData = new FormData(form);
+			// Объект FormData создаст данные из формы в формате ключ:значение. Здесь получаем данные из определенной формы
+			let formData = new FormData(this);
 
-		// Создаем объект, в который поместим все данные из формы
-		let obj = {};
-		formData.forEach(function (value, key) {
-			obj[key] = value;
-		});
+			// Создаем объект, в который поместим все данные из формы
+			let obj = {};
+			formData.forEach(function (value, key) {
+				obj[key] = value;
+			});
 
-		// Превращаем с помощью stringify наш объект в понятный для json код
-		let json = JSON.stringify(obj);
+			// Превращаем с помощью stringify наш объект в понятный для json код
+			let json = JSON.stringify(obj);
 
-		// Создаем объект, который позволяет асинхронно общаться с сервером
-		let request = new XMLHttpRequest();
-		// Метод опыт open помогает нам настроить ajax запрос
-		// request.open(method, url, async, login, pass);
-		request.open('POST', '../server.php');
-		// request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-		request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-		request.send(json);
+			// Создаем объект, который позволяет асинхронно общаться с сервером
+			let request = new XMLHttpRequest();
+			// Метод опыт open помогает нам настроить ajax запрос
+			// request.open(method, url, async, login, pass);
+			request.open('POST', '../server.php');
+			// request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+			request.send(json);
 
-		// Событие, которое отлавливает изменения статуса отправки данных
-		request.addEventListener('readystatechange', function () {
-			if (request.readyState < 4) {
-				message.innerHTML = messageObject.loading;
-			} else if (request.readyState === 4 && request.status == 200) {
-				message.innerHTML = messageObject.success;
+			// Событие, которое отлавливает изменения статуса отправки данных
+			request.addEventListener('readystatechange', function () {
+				if (request.readyState < 4) {
+					message.innerHTML = messageObject.loading;
+				} else if (request.readyState === 4 && request.status == 200) {
+					message.innerHTML = messageObject.success;
+				} else {
+					message.innerHTML = messageObject.failure;
+				}
+			});
+
+			// Находим в форме все инпуты
+			let formInputs = this.querySelectorAll('input');
+
+			// Если инпуты есть, то очищаем их, если нет, то вернем false
+			if (formInputs) {
+				for (let i = 0; i < formInputs.length; i++) {
+					formInputs[i].value = '';
+				}
 			} else {
-				message.innerHTML = messageObject.failure;
+				return false;
 			}
 		});
-
-		// Находим в форме все инпуты
-		let formInputs = form.querySelectorAll('input');
-
-		// Если инпуты есть, то очищаем их, если нет, то вернем false
-		if (formInputs) {
-			for (let i = 0; i < formInputs.length; i++) {
-				formInputs[i].value = '';
-			}
-		} else {
-			return false;
-		}
 	}
+
+	sendData('.main-form', statusMessage);
+	sendData('.contact-send', statusMessage);
 
 });
